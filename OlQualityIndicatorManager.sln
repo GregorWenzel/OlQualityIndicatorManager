@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlQualityIndicatorManager", "OlQualityIndicatorManager\OlQualityIndicatorManager.csproj", "{295BAB36-3265-46B1-8AF2-74967602C9F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlQualityIndicatorManager.Services", "OlQualityIndicatorManager.Services\OlQualityIndicatorManager.Services.csproj", "{4AC3600C-A3B6-47BA-A086-B3B9E5632674}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlQualityIndicatorManager.Infrastructure", "OlQualityIndicatorManager.Infrastructure\OlQualityIndicatorManager.Infrastructure.csproj", "{3088026B-C81B-4D65-8343-7FC4723BEA3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlQualityIndicatorManager.Grid", "OlQualityIndicatorManager.Grid\OlQualityIndicatorManager.Grid.csproj", "{FEEBAD5E-0908-4BF8-9998-628EE7A89414}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlQualityIndicatorManager.Plots", "OlQualityIndicatorManager.Plots\OlQualityIndicatorManager.Plots.csproj", "{7944E3E0-6328-4FCF-87BC-69FB371230DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{295BAB36-3265-46B1-8AF2-74967602C9F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{295BAB36-3265-46B1-8AF2-74967602C9F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{295BAB36-3265-46B1-8AF2-74967602C9F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{295BAB36-3265-46B1-8AF2-74967602C9F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AC3600C-A3B6-47BA-A086-B3B9E5632674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC3600C-A3B6-47BA-A086-B3B9E5632674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC3600C-A3B6-47BA-A086-B3B9E5632674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC3600C-A3B6-47BA-A086-B3B9E5632674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3088026B-C81B-4D65-8343-7FC4723BEA3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3088026B-C81B-4D65-8343-7FC4723BEA3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3088026B-C81B-4D65-8343-7FC4723BEA3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3088026B-C81B-4D65-8343-7FC4723BEA3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEEBAD5E-0908-4BF8-9998-628EE7A89414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEEBAD5E-0908-4BF8-9998-628EE7A89414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEEBAD5E-0908-4BF8-9998-628EE7A89414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEEBAD5E-0908-4BF8-9998-628EE7A89414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7944E3E0-6328-4FCF-87BC-69FB371230DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7944E3E0-6328-4FCF-87BC-69FB371230DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7944E3E0-6328-4FCF-87BC-69FB371230DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7944E3E0-6328-4FCF-87BC-69FB371230DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9C9708E-CEBB-4883-B478-91218883B016}
+	EndGlobalSection
+EndGlobal
