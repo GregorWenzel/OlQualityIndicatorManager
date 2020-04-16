@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace OlQualityIndicatorManager.Infrastructure.Domain
@@ -196,6 +197,26 @@ namespace OlQualityIndicatorManager.Infrastructure.Domain
             {
                 subsection.Number = $"{TypePosition}.{runningIndex}";
                 RecommendationList.Add(subsection);
+                if (subsection.RecommendationType.Id.ToLower().Contains("recommendation") && subsection.RecommendationGrade.Name == null)
+                {
+                    string text = HelperFunctions.GetPlainTextFromHtml(subsection.Text);
+                    if ((Regex.Match(text, @"\bsoll\b", RegexOptions.IgnoreCase).Success) || (Regex.Match(text, @"\bsollen\b", RegexOptions.IgnoreCase).Success))
+                    {
+                        subsection.recommendationGrade.Id = "a";
+                    }
+                    else if ((Regex.Match(text, @"\bsollte\b", RegexOptions.IgnoreCase).Success) || (Regex.Match(text, @"\bsollten\b", RegexOptions.IgnoreCase).Success))
+                    {
+                        subsection.RecommendationGrade.Id = "b";
+                    }
+                    else if ((Regex.Match(text, @"\bkann\b", RegexOptions.IgnoreCase).Success) || (Regex.Match(text, @"\bkönnen\b", RegexOptions.IgnoreCase).Success))
+                    {
+                        subsection.RecommendationGrade.Id = "0";
+                    }
+                    else
+                    {
+
+                    }
+                }
                 runningIndex += 1;
             }
 

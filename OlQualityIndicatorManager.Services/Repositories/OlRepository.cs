@@ -121,7 +121,10 @@ namespace OlQualityIndicatorManager.Services.Repositories
                 guidelineList[index] = result;
             }
 
-            mySqlRepository.SaveGuideline(result);
+            if (result.Language == "DE")
+            {
+                mySqlRepository.SaveGuideline(result);
+            }
 
             return result;
             //eventAggregator.GetEvent<QualityIndicatorsLoadedEvent>().Publish(result);

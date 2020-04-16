@@ -11,6 +11,8 @@ namespace OlQualityIndicatorManager.Services.Repositories
 {
     public class MySqlRepository
     {
+        List<OlSubsection> recommendationList = new List<OlSubsection>();
+
         MySqlConnection conn;
 
         public MySqlRepository()
@@ -471,6 +473,8 @@ namespace OlQualityIndicatorManager.Services.Repositories
                 recommendation.IdKey = cmd.LastInsertedId;
             }
 
+            recommendationList.Add(recommendation);
+
             cmd = conn.CreateCommand();
             cmd.CommandText = "DELETE FROM level_of_evidence WHERE recommendation_id = @id";
             cmd.Parameters.AddWithValue("@id", recommendation.IdKey);
@@ -504,7 +508,7 @@ namespace OlQualityIndicatorManager.Services.Repositories
             }
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = cmdPrefix + "uid = @uid, id = @id, type_position = @type_position, position = @position, guideline_id = @gid, numerator = @numerator, denominator = @denominator, title = @title, url = @url, evidence_basis = @evidence_basis, url_certification = @url_certification, qi_type = @qi_type, parent_subsection_uid = @parent_subsection_uid";
+            cmd.CommandText = cmdPrefix + "uid = @uid, id = @id, annotations = @annotations, type_position = @type_position, position = @position, guideline_id = @gid, numerator = @numerator, denominator = @denominator, title = @title, url = @url, evidence_basis = @evidence_basis, url_certification = @url_certification, parent_subsection_uid = @parent_subsection_uid";
             cmd.CommandText += cmdSuffix;
             cmd.Parameters.AddWithValue("@uid", qi.Uid);
             cmd.Parameters.AddWithValue("@id", qi.Id);
@@ -512,13 +516,14 @@ namespace OlQualityIndicatorManager.Services.Repositories
             cmd.Parameters.AddWithValue("@position", qi.Position);
             cmd.Parameters.AddWithValue("@gid", guideline_id);
             cmd.Parameters.AddWithValue("@title", qi.Title);
-            cmd.Parameters.AddWithValue("@qi_type", qi.IndicatorType.ToString());
+            //cmd.Parameters.AddWithValue("@qi_type", qi.IndicatorType.ToString());
             cmd.Parameters.AddWithValue("@numerator", qi.Numerator);
             cmd.Parameters.AddWithValue("@denominator", qi.Denominator);
             cmd.Parameters.AddWithValue("@url", qi.Url);
             cmd.Parameters.AddWithValue("@url_certification", qi.UrlCertification);
             cmd.Parameters.AddWithValue("@evidence_basis", qi.EvidenceBasis);
             cmd.Parameters.AddWithValue("@parent_subsection_uid", qi.ParentSubsectionUid);
+            cmd.Parameters.AddWithValue("@annotations", qi.Annotations);
             cmd.ExecuteNonQuery();
 
             if (qi.IdKey < 0)
@@ -533,10 +538,11 @@ namespace OlQualityIndicatorManager.Services.Repositories
 
             foreach (OlSubsection recommendation in qi.ReferenceRecommendationList)
             {
+                long recommendationId = recommendationList.First(item => item.Uid == recommendation.Uid).IdKey;
                 cmd = conn.CreateCommand();
                 cmd.CommandText = "INSERT INTO quality_indicator_has_recommendation SET qualityindicator_id = @qid, recommendation_id = @recommendation_id";
                 cmd.Parameters.AddWithValue("@qid", qi.IdKey);
-                cmd.Parameters.AddWithValue("@recommendation_id", recommendation.IdKey);
+                cmd.Parameters.AddWithValue("@recommendation_id", recommendationId);
                 cmd.ExecuteNonQuery();
             }
         }
