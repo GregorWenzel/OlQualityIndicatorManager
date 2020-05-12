@@ -228,7 +228,7 @@ namespace OlQualityIndicatorManager.Services.Repositories
             }
 
             SaveRecommendations(guideline);
-            SaveQualityIndicators(guideline);
+            //SaveQualityIndicators(guideline);
             SaveWorkgroups(guideline);
             SaveAssociations(guideline);
 
@@ -306,7 +306,7 @@ namespace OlQualityIndicatorManager.Services.Repositories
                 reader.Close();
 
                 cmd = conn.CreateCommand();
-                cmd.CommandText = cmdPrefix + "uid = @uid, id = @id, title = @title, url = @url, email = @email, abbreviation = @abbreviation, phone = @phone, postal_code = @postal_code, place = @place, website_url = @website_url";
+                cmd.CommandText = cmdPrefix + "uid = @uid, id = @id, title = @title, url = @url, email = @email, abbreviation = @abbreviation, phone = @phone, street = @street, postal_code = @postal_code, place = @place, website_url = @website_url";
                 cmd.CommandText += cmdSuffix;
                 cmd.Parameters.AddWithValue("@uid", association.Association.Uid);
                 cmd.Parameters.AddWithValue("@id", association.Association.Id);
@@ -315,6 +315,7 @@ namespace OlQualityIndicatorManager.Services.Repositories
                 cmd.Parameters.AddWithValue("@email", association.Association.Email);
                 cmd.Parameters.AddWithValue("@abbreviation", association.Association.Abbreviation);
                 cmd.Parameters.AddWithValue("@phone", association.Association.Phone);
+                cmd.Parameters.AddWithValue("@street", association.Association.Street);
                 cmd.Parameters.AddWithValue("@postal_code", association.Association.PostalCode);
                 cmd.Parameters.AddWithValue("@place", association.Association.Place);
                 cmd.Parameters.AddWithValue("@website_url", association.Association.WebsiteUrl);
